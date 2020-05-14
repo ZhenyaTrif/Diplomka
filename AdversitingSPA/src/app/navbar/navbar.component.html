@@ -1,0 +1,28 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <a class="navbar-brand" href="home"><img src="/assets/images/auto.png" width="32" height="32" /></a>
+  <ul class="nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="home" style="color:white">Главная<span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin-panel" *ngIf="!visibility && admin" style="color:white">Панель админа</a>
+    </li>
+  </ul>
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="ad-create" style="color:white">Разместить объявление</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="user/profile" *ngIf="!visibility" style="color:white">Мой кабинет</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="user/login" *ngIf="visibility" style="color:white">Войти</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="user/registration" *ngIf="visibility" style="color:white">Регистрация</a>
+    </li>
+    <li class="nav-item">
+      <button class="btn btn-danger" (click)="onLogout()" *ngIf="!visibility">Выйти</button>
+    </li>
+  </ul>
+</nav>

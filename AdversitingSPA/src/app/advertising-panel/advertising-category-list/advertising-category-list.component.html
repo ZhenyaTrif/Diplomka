@@ -1,0 +1,16 @@
+<table class="table table-hover" style="background-color: rgb(255, 255, 255);">
+    <thead style="background-color: rgb(255, 255, 255);">
+        <tr>
+            <th>Имеющиеся категории</th>
+            <th>Функции</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="text-dark" *ngFor="let category of service.clist">
+            <td (click)="populateForm(category)">{{category.categoryName}}</td>
+            <td>
+                <button type="button" class="btn btn-danger btn-block" (click)="deleteCat(category)">Удалить</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

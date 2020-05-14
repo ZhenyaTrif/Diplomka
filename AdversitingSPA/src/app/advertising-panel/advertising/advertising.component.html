@@ -1,0 +1,63 @@
+<div class="container-fluid col-md-8">
+    <h2>Ваше объявление</h2>
+    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+        <h5>Заголовок</h5>
+        <div class="form-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fas fa-heading"></i>
+                </div>
+                <input name="advertisingName" #advertisingName="ngModel" [(ngModel)]="service.formData.advertisingName"
+                    class="form-control" placeholder="Заголовок" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <h5>Информация</h5>
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <input name="text" #text="ngModel" [(ngModel)]="service.formData.text" class="form-control"
+                    placeholder="Информация" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <h5>Путь картинки</h5>
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fas fa-image"></i>
+                </div>
+                <input name="imagePath" #imagePath="ngModel" [(ngModel)]="service.formData.imagePath"
+                    class="form-control" placeholder="Путь картинки" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <h5>Стоимость</h5>
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <input name="itemPrice" #itemPrice="ngModel" [(ngModel)]="service.formData.itemPrice"
+                    class="form-control" placeholder="Стоимость">
+            </div>
+            <span><i class="fas fa-exclamation-circle"></i> </span>
+                    <span>Если не указать стоимость, то она будет установлена как "Договорная".</span>
+        </div>
+        <div class="form-group">
+            <div class="btn-group-prepend">
+                <div class="btn-group-text">
+                    <h5>Категория</h5>
+                </div>
+                <select class="form-control" name="advertisingCategoryId" #advertisingCategoryId="ngModel"
+                    [(ngModel)]="service.formData.advertisingCategoryId">
+                    <option *ngFor="let category of service.clist" [value]="category.id">
+                            {{category.categoryName}}
+                          </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success btn-block" type="submit" [disabled]="form.invalid">Разместить</button>
+        </div>
+    </form>
+</div>

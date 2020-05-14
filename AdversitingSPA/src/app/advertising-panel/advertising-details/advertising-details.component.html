@@ -1,0 +1,21 @@
+<div class="card" *ngIf="adDetails">
+    <h2 class="col">{{adDetails.advertisingName}}</h2>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <img src="{{adDetails.imagePath}}" class="mx-auto d-block" width="300" height="300">
+        </li>
+        <li class="list-group-item">
+            <strong>Стоимость: </strong>{{adDetails.itemPrice}}
+        </li>
+        <li class="list-group-item">
+            <strong>Категория: </strong>{{adDetails.categoryName}}
+        </li>
+        <li class="list-group-item">
+            <strong>Описание: </strong>{{adDetails.text}}
+        </li>
+        <li class="list-group-item">
+            <span><i class="fas fa-exclamation-circle"></i></span>
+            <span> Администрация сайта не несет ответственности за предлагаемый товар.</span>
+        </li>
+    </ul>
+</div>

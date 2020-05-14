@@ -1,0 +1,22 @@
+input.ng-touched.ng-invalid{
+  border-color: red;
+}
+
+body {
+  background-color: #64666b;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+h3, h5 {
+  color: rgb(245, 245, 245);
+}
+
+table tr:hover{
+  cursor: pointer;
+}
+
+.vertical-center {
+  height:100%;
+  width:100%;
+}

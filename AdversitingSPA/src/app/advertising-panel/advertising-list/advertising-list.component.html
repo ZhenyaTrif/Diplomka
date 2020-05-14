@@ -1,0 +1,53 @@
+<div class="container-fluid">
+
+    <form #form="ngForm" class="row" autocomplete="off" (submit)="onSearch(form)">
+        <div class="form-group col-6">
+            <input name="searchTitle" #searchTitle="ngModel" [(ngModel)]="service.pageInfo.filterModel.selectedTitle"
+                class="form-control" placeholder="Поиск">
+        </div>
+        <div class="form-group col-4">
+            <select class="form-control" name="selectedCategory" #selectedCategory="ngModel"
+                [(ngModel)]="service.pageInfo.filterModel.selectedCategory" >
+                <option selected value='0'>Все</option>
+                <option *ngFor="let category of service.pageInfo.filterModel.categories" [value]="category.id">
+                    {{category.categoryName}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group col-2">
+            <button class="btn btn-success btn-block" type="submit" [disabled]="form.invalid">Поиск</button>
+        </div>
+    </form>
+    <br>
+
+    <div class="media" *ngFor="let ad of service.pageInfo.ads">
+        <div class="media-left">
+            <img src="{{ad.imagePath}}" class="media-object" routerLink="ad-details/{{ad.id}}" width="100"
+                height="100" />
+        </div>
+        <div class="media-body">
+            <div class="row">
+                <h4 class="media-heading col">
+                    <a routerLink="ad-details/{{ad.id}}">{{ad.advertisingName}}</a>
+                </h4>
+            </div>
+
+            <span class="col">Стоимость: <strong>{{ad.itemPrice}}</strong></span>
+            <p>
+                <span class="col">Подробнее: {{ad.text}}</span>
+            </p>
+        </div>
+    </div>
+    <br>
+
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" *ngIf="service.pageInfo.pageModel.hasPreviousPage" (click)="toPreviousPage()">Назад</a>
+        </li>
+
+        <li class="page-item">
+            <a class="page-link" *ngIf="service.pageInfo.pageModel.hasNextPage" (click)="toNextPage()">Вперёд</a>
+        </li>
+    </ul>
+
+</div>
