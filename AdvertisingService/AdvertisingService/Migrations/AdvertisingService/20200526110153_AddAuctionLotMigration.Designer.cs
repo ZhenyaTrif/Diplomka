@@ -3,14 +3,16 @@ using Advertising.Dal.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdvertisingService.Migrations.AdvertisingService
 {
     [DbContext(typeof(AdvertisingServiceContext))]
-    partial class AdvertisingServiceContextModelSnapshot : ModelSnapshot
+    [Migration("20200526110153_AddAuctionLotMigration")]
+    partial class AddAuctionLotMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

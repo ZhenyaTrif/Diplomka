@@ -67,6 +67,13 @@ namespace Advertising.Dal.Contexts
                 new AdvertisingModel { Id=16, AdvertisingName="Nissan Terrano R20", Text="Авто 2003 г. 260к км. +375298475936",
                     ImagePath ="https://s1.cdn.autoevolution.com/images/gallery/NISSANTerrano3Doors-430_10.jpg", ItemPrice="16 000", AdvertisingCategoryId=8},
                 });
+            modelBuilder.Entity<AuctionLot>().HasData(
+                new AuctionLot[]
+                {
+                new AuctionLot { Id=1, LotName="Audi A6", Text="Авто 2016 года. Есть страховка. Все документамы имеются. +375293564367", 
+                    ImagePath="https://autoreview.ru/images/Article/1689/Article_168984_860_575.jpg", StartPrice="50000", LotCategoryId=1, CreaterId="06fb596d-baae-44ea-93f6-d14120c7a8f9", Checked=false, 
+                    Opened=true, WinnerId="no"}
+                });
             base.OnModelCreating(modelBuilder);
         }
     }
