@@ -18,10 +18,12 @@ namespace Advertising.DI
             services.AddTransient<IDataAccess, DataAccess>();
             services.AddTransient<IAdvertisingRepository, AdvertisingRepository>();
             services.AddTransient<IAdvertisingCategoryRepository, AdvertisingCategoryRepository>();
+            services.AddTransient<IAuctionLotRepository, AuctionLotRepository>();
 
             services.AddTransient<IBusinessLogic, BusinessLogic>();
             services.AddTransient<IAdvertisingEntityService, AdvertisingEntityService>();
             services.AddTransient<IAdvertisingCategoryService, AdvertisingCategoryService>();
+            services.AddTransient<IAuctionLotService, AuctionLotService>();
         }
     }
 }

@@ -7,5 +7,7 @@ namespace Advertising.Dal.DataAccess.Interfaces
         IAdvertisingRepository Advertisings { get; set; }
 
         IAdvertisingCategoryRepository AdvertisingCategories { get; set; }
+
+        IAuctionLotRepository AuctionLots { get; set; }
     }
 }

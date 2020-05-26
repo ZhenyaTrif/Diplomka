@@ -15,6 +15,8 @@ namespace Advertising.Dal.Contexts
 
         public DbSet<AdvertisingCategory> AdvertisingCategories { get; set; }
 
+        public DbSet<AuctionLot> AuctionLots { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AdvertisingCategory>().HasData(

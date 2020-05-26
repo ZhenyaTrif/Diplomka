@@ -7,5 +7,7 @@ namespace Advertising.Bll.BusinessLogic.Interfaces
         IAdvertisingEntityService Advertisings { get; set; }
 
         IAdvertisingCategoryService AdvertisingCategories { get; set; }
+
+        IAuctionLotService AuctionLots { get; set; }
     }
 }
