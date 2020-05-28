@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -34,11 +35,11 @@ namespace AdvertisingService
         {
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllers();
 
             services.AddDbContext<AuthenticationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>()
+            services.AddIdentityCore<ApplicationUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AuthenticationContext>();
 
@@ -55,7 +56,7 @@ namespace AdvertisingService
             services.IoCCommonRegister(Configuration);
 
             services.AddDbContext<AdvertisingServiceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AdvertisingConnection"), b => b.MigrationsAssembly("AdvertisingService")));
-
+            
             services.AddCors();
 
             var secretKey = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:JWT_Secret"].ToString());
@@ -82,18 +83,23 @@ namespace AdvertisingService
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseRouting();
+
             app.UseCors(builder => builder.WithOrigins(Configuration["ApplicationSettings:ClientURL"].ToString()).AllowAnyHeader().AllowAnyMethod());
 
             app.UseAuthentication();
 
-            app.UseMvc();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }
