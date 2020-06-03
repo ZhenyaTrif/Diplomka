@@ -56,8 +56,14 @@ namespace AdvertisingService
             services.IoCCommonRegister(Configuration);
 
             services.AddDbContext<AdvertisingServiceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AdvertisingConnection"), b => b.MigrationsAssembly("AdvertisingService")));
-            
-            services.AddCors();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder => builder.WithOrigins("http://localhost:4200")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
+            });
 
             var secretKey = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:JWT_Secret"].ToString());
 
@@ -92,7 +98,7 @@ namespace AdvertisingService
 
             app.UseRouting();
 
-            app.UseCors(builder => builder.WithOrigins(Configuration["ApplicationSettings:ClientURL"].ToString()).AllowAnyHeader().AllowAnyMethod());
+            app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
 

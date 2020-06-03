@@ -50,7 +50,7 @@ namespace AdvertisingService.Controllers
 
             var items = ads.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            SearchListModel viewModel = new SearchListModel
+            SearchListModel<AdvertisingModel> viewModel = new SearchListModel<AdvertisingModel>
             {
                 PageModel = new PageModel(count, page, pageSize),
                 FilterModel = new FilterModel(await db.AdvertisingCategories.GetAllAsync(), categoryId, title),

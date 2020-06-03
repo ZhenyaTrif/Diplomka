@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace AdvertisingService.Models
 {
-    public class SearchListModel
+    public class SearchListModel<T>
     {
-        public IEnumerable<AdvertisingModel> Ads { get; set; }
+        public IEnumerable<T> Ads { get; set; }
 
         public PageModel PageModel { get; set; }
 

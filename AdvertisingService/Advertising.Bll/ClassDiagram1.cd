@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Advertising.Bll.BusinessLogic.BusinessLogic" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAgAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>BusinessLogic\BusinessLogic.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advertising.Bll.Services.AdvertisingCategoryService" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAQAAAAAAAAAAAAAAAABAgAAAAAAIAAAIA=</HashCode>
+      <FileName>Services\AdvertisingCategoryService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advertising.Bll.Services.AdvertisingEntityService" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAQAAAAAAAAAAAAAAIABAgAAAAAAIAAAIA=</HashCode>
+      <FileName>Services\AdvertisingEntityService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advertising.Bll.Services.AuctionLotService" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAQAAAAAAAAAAAAAAIABAgAAAAAAIAAAIA=</HashCode>
+      <FileName>Services\AuctionLotService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Common.Entity.AdvertisingCategory">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Common.Entity.AdvertisingModel">
+    <Position X="13" Y="6" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Common.Entity.AuctionLot">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Advertising.Dal.Contexts.AdvertisingServiceContext">
+    <Position X="5.5" Y="8.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Advertising.Dal.DataAccess.DataAccess" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advertising.Dal.Repositories.AdvertisingCategoryRepository" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="8.75" Width="2.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advertising.Dal.Repositories.AdvertisingRepository" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="8.75" Width="1.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Advertising.Dal.Repositories.AuctionLotRepository" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="8.75" Width="1.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Advertising.Bll.BusinessLogic.Interfaces.IBusinessLogic">
+    <Position X="8.25" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAgAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>BusinessLogic\Interfaces\IBusinessLogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Advertising.Bll.Services.Interfaces.IAdvertisingCategoryService" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IAdvertisingCategoryService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Advertising.Bll.Services.Interfaces.IAdvertisingEntityService">
+    <Position X="8.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IAdvertisingEntityService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Advertising.Bll.Services.Interfaces.IAuctionLotService">
+    <Position X="5.75" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Interfaces\IAuctionLotService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Common.Repository.IRepository&lt;T&gt;">
+    <Position X="11" Y="2.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="Common.Patterns.IService&lt;T&gt;">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="Advertising.Dal.DataAccess.Interfaces.IDataAccess">
+    <Position X="8" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="Advertising.Dal.Repositories.Interfaces.IAdvertisingCategoryRepository" Collapsed="true">
+    <Position X="3" Y="7" Width="2.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="Advertising.Dal.Repositories.Interfaces.IAdvertisingRepository">
+    <Position X="0.75" Y="7" Width="2" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="Advertising.Dal.Repositories.Interfaces.IAuctionLotRepository">
+    <Position X="5.75" Y="7" Width="2" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -8,7 +8,7 @@ import { ChangePassword } from '../user/models/change-password';
 })
 export class UserService {
 
-  readonly BaseURL = 'http://localhost:53285/api';
+  readonly BaseURL = 'https://localhost:5001/api';
 
   constructor(private fb:FormBuilder, private httpClient: HttpClient) { }
 

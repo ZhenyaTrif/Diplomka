@@ -20,20 +20,20 @@ namespace AdvertisingService.Controllers
     {
         private UserManager<ApplicationUser> _userManager;
 
-        private SignInManager<ApplicationUser> _signInManager;
+        //private SignInManager<ApplicationUser> _signInManager;
 
         private ApplicationSettings _applicationSettings;
 
-        public ApplicationUserController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<ApplicationSettings> appOptions)
+        public ApplicationUserController(UserManager<ApplicationUser> userManager, /*SignInManager<ApplicationUser> signInManager,*/ IOptions<ApplicationSettings> appOptions)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
+            //_signInManager = signInManager;
             _applicationSettings = appOptions.Value;
         }
 
         [HttpPost]
         [Route("Register")]
-        public async Task<Object> PostApplicationUser(ApplicationUserModel model)
+        public async Task<IActionResult> PostApplicationUser(ApplicationUserModel model)
         {
 
             if(model.Password == "ad19MIN56")
@@ -67,7 +67,7 @@ namespace AdvertisingService.Controllers
 
         [HttpPost]
         [Route("Login")]
-        public async Task<Object> Login(LoginModel model)
+        public async Task<IActionResult> Login(LoginModel model)
         {
             var user = await _userManager.FindByNameAsync(model.UserName);
 
