@@ -63,6 +63,29 @@ namespace AdvertisingService.Controllers
             //return await db.Advertisings.GetAllAsync();
         }
 
+        [HttpGet]
+        [Route("categoryid={categoryId}")]
+        public async Task<IActionResult> ChangeByCategory(int? categoryId = 0)
+        {
+
+            IEnumerable<AdvertisingModel> ads = await db.Advertisings.GetAllAsync();
+
+            if (categoryId != null && categoryId != 0)
+            {
+                ads = ads.Where(p => p.AdvertisingCategoryId == categoryId);
+            }
+            else
+            {
+                IEnumerable<AdvertisingModel> adds = await db.Advertisings.GetAllAsync();
+                return Ok(adds.Where(x => x.AdvertisingCategoryId == 1));
+            }
+
+            return Ok(ads);
+
+
+            //return await db.Advertisings.GetAllAsync();
+        }
+
         // GET: api/AdvertisingModels/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)

@@ -3,6 +3,7 @@ import { AdvertisingService } from 'src/app/shared/advertising.service';
 import { Advertising } from '../models/advertising';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { LotService } from 'src/app/shared/lot.service';
 
 @Component({
   selector: 'app-advertising-list',
@@ -11,7 +12,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AdvertisingListComponent implements OnInit {
 
-  constructor(private service: AdvertisingService, private router: Router) { }
+  constructor(private service: AdvertisingService, private lotservice: LotService, private router: Router) { }
 
   ngOnInit() {
 
@@ -31,6 +32,7 @@ export class AdvertisingListComponent implements OnInit {
     }
 
     this.service.toPage(1);
+    this.lotservice.updateList();
   }
 
   toNextPage(){
@@ -47,5 +49,9 @@ export class AdvertisingListComponent implements OnInit {
 
   onSearch(form: NgForm){
     this.service.toFilteredPage(form.value.selectedCategory, form.value.searchTitle, 1);
+  }
+
+  toAuction(){
+    window.location.href = "auction";
   }
 }

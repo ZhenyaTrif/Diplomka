@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   visibility: boolean = false;
-  admin: boolean = true; 
+  admin: boolean = true;
 
   constructor(private router: Router) { }
 
@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
     window.location.href = "user/login";
   }
 
-  createAd(){
-    this.router.navigate(['/ad-create']);
-  }
+ // createAd(){
+  //  this.router.navigate(['/ad-create']);
+  //}
 }

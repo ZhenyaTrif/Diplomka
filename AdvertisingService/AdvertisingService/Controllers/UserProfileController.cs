@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Advertising.Bll.BusinessLogic.Interfaces;
 using AdvertisingService.Models;
 using AdvertisingService.Models.AuthorizationModels;
+using Common.Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -16,10 +18,12 @@ namespace AdvertisingService.Controllers
     public class UserProfileController : ControllerBase
     {
         private UserManager<ApplicationUser> _userManager;
+        private IBusinessLogic db;
 
-        public UserProfileController(UserManager<ApplicationUser> userManager)
+        public UserProfileController(UserManager<ApplicationUser> userManager, IBusinessLogic db)
         {
             _userManager = userManager;
+            this.db = db;
         }
 
         [HttpGet]
@@ -32,10 +36,34 @@ namespace AdvertisingService.Controllers
 
             return new
             {
+                userId,
                 user.FullName,
                 user.Email,
                 user.UserName
             };
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("GetCreatorInfo")]
+        public async Task<Object> GetCreatorInfo()
+        {
+            string userId = User.Claims.First(c => c.Type == "UserID").Value;
+
+            IEnumerable<AuctionLot> auctionLots = await db.AuctionLots.GetAllAsync();
+
+            var lots = auctionLots.Where(x => x.Opened == false && x.WinnerId == userId).ToList();
+
+            List<ApplicationUser> users = new List<ApplicationUser>();
+
+            foreach (AuctionLot i in lots)
+            {
+                users.Add(await _userManager.FindByIdAsync(i.CreaterId));
+            }
+
+            Message message = new Message(lots, users);
+
+            return Ok(users);
         }
 
         [HttpPost]

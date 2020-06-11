@@ -1,40 +1,42 @@
-<div class="row mt-4">
+<div class="container col-6">
+  <div class="row">
     <div class="col-md">
-        <h2>Регистрация пользователя</h2>
+        <h2 style="color: aliceblue;">Регистрация пользователя</h2>
         <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
             <div class="form-group required">
-                <label>Имя пользователя (Nickname)</label>
+                <label style="color: aliceblue;">Имя пользователя (Nickname)</label>
                 <input class="form-control" formControlName="UserName">
                 <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">Это поле обязательно для ввода.</label>
             </div>
             <div class="form-group">
-                <label>Email</label>
+                <label style="color: aliceblue;">Email</label>
                 <input class="form-control" formControlName="Email">
                 <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">Неверный формат email.</label>
             </div>
             <div class="form-group">
-                <label>Полное имя</label>
+                <label style="color: aliceblue;">Полное имя</label>
                 <input class="form-control" formControlName="FullName">
             </div>
             <div formGroupName="Passwords">
                 <div class="form-group required">
-                    <label>Пароль</label>
+                    <label style="color: aliceblue;">Пароль</label>
                     <input type="password" class="form-control" formControlName="Password">
                     <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.required">Это поле обязательно для ввода.</label>
                     <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.minlength">Требуется минимум 6 символов.</label>
                 </div>
                 <div class="form-group required">
-                    <label>Подтверждение пароля</label>
+                    <label style="color: aliceblue;">Подтверждение пароля</label>
                     <input type="password" class="form-control" formControlName="ConfirmPassword">
                     <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.required">Это поле обязательно для ввода.</label>
                     <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Пароли не совпадают.</label>
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-8 offset-md-2">
+                <div class="form-group col-md-12">
                     <button type="submit" class="btn btn-success btn-block" [disabled]="!service.formModel.valid" >Регистрация</button>
                 </div>
             </div>
         </form>
     </div>
+  </div>
 </div>

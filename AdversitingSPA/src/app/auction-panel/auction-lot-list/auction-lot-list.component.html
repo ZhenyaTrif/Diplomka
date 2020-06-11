@@ -1,0 +1,27 @@
+<div class="container">
+  <h2 style="color: aliceblue;">Ведутся торги</h2>
+  <div class="row">
+    <div class="col-12">
+      <div *ngFor="let lot of lotservice.reallist">
+        <div class="media">
+          <div class="media-left">
+              <img src="{{lot.imagePath}}" class="media-object" width="100"
+                  height="100" />
+          </div>
+          <div class="media-body">
+              <div class="row">
+                  <h4 class="media-heading col">
+                      <a>{{lot.lotName}}</a>
+                  </h4>
+              </div>
+              <p>
+                  <span class="col">{{lot.text}}</span>
+              </p>
+              <a routerLink="/lot-details/{{lot.id}}" class="btn btn-primary stretched-link col-12">К лоту</a>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

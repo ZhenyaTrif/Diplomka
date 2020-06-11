@@ -25,75 +25,52 @@ namespace AdvertisingService.Controllers
         [HttpGet]
         public async Task<IEnumerable<AuctionLot>> Get()
         {
-            return await db.AuctionLots.GetAllAsync();
+            IEnumerable<AuctionLot> auctionLots = await db.AuctionLots.GetAllAsync();
+
+            var lots = auctionLots.Where(x => x.Opened == true);
+
+            return lots;
         }
 
-        [HttpGet]
-        [Route("categoryid={categoryId}/page={page}")]
-        [Route("categoryid={categoryId}/title={title}/page={page}")]
-        public async Task<IActionResult> ChangePage(string title = null, int? categoryId = 0, int page = 1)
-        {
-            int pageSize = 10;
-
-            IEnumerable<AuctionLot> ads = await db.AuctionLots.GetAllAsync();
-
-            if (categoryId != null && categoryId != 0)
-            {
-                ads = ads.Where(p => p.LotCategoryId == categoryId);
-            }
-            if (!String.IsNullOrEmpty(title))
-            {
-                ads = ads.Where(p => p.LotName.Contains(title));
-            }
-
-            var count = ads.Count();
-
-            var items = ads.Skip((page - 1) * pageSize).Take(pageSize).ToList();
-
-            SearchListModel<AuctionLot> viewModel = new SearchListModel<AuctionLot>
-            {
-                PageModel = new PageModel(count, page, pageSize),
-                FilterModel = new FilterModel(await db.AdvertisingCategories.GetAllAsync(), categoryId, title),
-                Ads = items
-            };
-
-            return Ok(viewModel);
-
-
-            //return await db.AuctionLots.GetAllAsync();
-        }
 
         // GET: api/AuctionLot/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            if (id <= 0)
+            IEnumerable<AuctionLot> auctionLots = await db.AuctionLots.GetAllAsync();
+
+            var lots = auctionLots.Where(x => x.Id == id).ToList();
+            var lot = lots[0];
+
+            var category = await db.AdvertisingCategories.GetItemByIdAsync(lot.LotCategoryId);
+
+            LotFullModel lotFullModel = new LotFullModel
             {
-                return BadRequest();
-            }
-
-            AuctionLot auctionLot = await db.AuctionLots.GetItemByIdAsync(id);
-
-            if (auctionLot == null)
-            {
-                return NotFound();
-            }
-
-            var category = await db.AdvertisingCategories.GetItemByIdAsync(auctionLot.LotCategoryId);
-
-            LotFullModel adFullModel = new LotFullModel
-            {
-                Id = auctionLot.Id,
-                LotName = auctionLot.LotName,
-                Text = auctionLot.Text,
-                ImagePath = auctionLot.ImagePath,
-                StartPrice = auctionLot.StartPrice,
-                LotCategoryId = auctionLot.LotCategoryId,
+                Id = lot.Id,
+                LotName = lot.LotName,
+                Text = lot.Text,
+                ImagePath = lot.ImagePath,
+                StartPrice = lot.StartPrice,
+                LotCategoryId = lot.LotCategoryId,
                 CategoryName = category.CategoryName,
-                Opened = auctionLot.Opened
+                Checked = lot.Checked,
+                CreaterId = lot.CreaterId,
+                Opened = lot.Opened,
+                WinnerId = lot.WinnerId
+
             };
 
-            return Ok(adFullModel);
+            return Ok(lotFullModel);
+        }
+
+        [HttpGet("mess={id}")]
+        public async Task<IActionResult> GetMess(string id)
+        {
+            IEnumerable<AuctionLot> auctionLots = await db.AuctionLots.GetAllAsync();
+
+            var lots = auctionLots.Where(x => x.WinnerId == id).ToList();
+
+            return Ok(lots);
         }
 
         // PUT: api/AuctionLot/5
@@ -129,7 +106,11 @@ namespace AdvertisingService.Controllers
                     Text = "",
                     ImagePath = "",
                     StartPrice = "",
-                    LotCategoryId = 0
+                    LotCategoryId = 0,
+                    Opened = true,
+                    Checked = true,
+                    CreaterId = "",
+                    WinnerId = ""
                 });
 
                 return Ok(auctionLot);
@@ -138,7 +119,8 @@ namespace AdvertisingService.Controllers
             {
                 auctionLotModel.ImagePath = "/assets/images/no_photo.png";
             }
-
+            string userId = User.Claims.First(c => c.Type == "UserID").Value;
+            auctionLotModel.CreaterId = userId;
             auctionLot = await db.AuctionLots.CreateAsync(auctionLotModel);
 
             return Ok(auctionLot);

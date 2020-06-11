@@ -5,12 +5,18 @@
       <a class="nav-link" routerLink="home" style="color:white">Главная<span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" routerLink="auction" style="color:white">Аукцион</a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" routerLink="/admin-panel" *ngIf="!visibility && admin" style="color:white">Панель админа</a>
     </li>
   </ul>
   <ul class="nav justify-content-end">
     <li class="nav-item">
       <a class="nav-link" routerLink="ad-create" style="color:white">Разместить объявление</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="auction-lot" style="color:white">Создать лот</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" routerLink="user/profile" *ngIf="!visibility" style="color:white">Мой кабинет</a>
@@ -22,7 +28,7 @@
       <a class="nav-link" routerLink="user/registration" *ngIf="visibility" style="color:white">Регистрация</a>
     </li>
     <li class="nav-item">
-      <button class="btn btn-danger" (click)="onLogout()" *ngIf="!visibility">Выйти</button>
+      <button class="btn" style="background: #8C959D" (click)="onLogout()" *ngIf="!visibility">Выйти</button>
     </li>
   </ul>
 </nav>

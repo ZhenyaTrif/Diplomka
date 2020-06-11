@@ -1,14 +1,15 @@
-<div class="card" *ngIf="adDetails">
+<div class="container">
+  <div class="card" *ngIf="adDetails">
     <h2 class="col">{{adDetails.advertisingName}}</h2>
     <ul class="list-group">
         <li class="list-group-item">
             <img src="{{adDetails.imagePath}}" class="mx-auto d-block" width="300" height="300">
         </li>
         <li class="list-group-item">
-            <strong>Стоимость: </strong>{{adDetails.itemPrice}}
+            <strong>Стоимость: </strong>{{adDetails.itemPrice}} р.
         </li>
         <li class="list-group-item">
-            <strong>Категория: </strong>{{adDetails.categoryName}}
+            <strong>Марка автомобиля: </strong>{{adDetails.categoryName}}
         </li>
         <li class="list-group-item">
             <strong>Описание: </strong>{{adDetails.text}}
@@ -18,4 +19,5 @@
             <span> Администрация сайта не несет ответственности за предлагаемый товар.</span>
         </li>
     </ul>
+  </div>
 </div>

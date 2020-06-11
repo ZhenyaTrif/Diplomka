@@ -1,5 +1,7 @@
-<div class="card" *ngIf="userDetails">
+<div class="container">
+  <div class="card" *ngIf="userDetails">
     <h1>Мой кабинет</h1>
+    <button class="btn btn-info" routerLink="messages" >Мои сообщения <span class="badge badge-light">{{lotservice.mymess}}</span></button>
     <ul class="list-group">
         <li class="list-group-item">
             <strong>Имя пользователя: </strong>{{userDetails.userName}}
@@ -10,8 +12,8 @@
         <li class="list-group-item">
             <strong>Email: </strong>{{userDetails.email}}
         </li>
+        <br>
         <li>
-            <br>
             <form #form="ngForm" autocomplete="off" (submit)="changePassword(form)">
                 <div class="form-group">
                     <input name="newPassword" #newPassword="ngModel" [(ngModel)]="service.passModel.newPassword"
@@ -24,4 +26,5 @@
             </form>
         </li>
     </ul>
+  </div>
 </div>

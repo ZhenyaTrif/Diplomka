@@ -35,7 +35,7 @@ namespace AdvertisingService
         {
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
 
             services.AddDbContext<AuthenticationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
@@ -101,6 +101,7 @@ namespace AdvertisingService
             app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

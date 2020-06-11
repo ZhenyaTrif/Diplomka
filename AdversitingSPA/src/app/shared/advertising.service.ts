@@ -9,6 +9,8 @@ import { PageInfo } from '../advertising-panel/models/pageInfo';
 })
 export class AdvertisingService {
 
+  helplist:Advertising[];
+
   list: Advertising[];
   clist: AdvertisingCategory[];
 
@@ -72,6 +74,5 @@ export class AdvertisingService {
   getAdDetails(id: number) {
     return this.http.get(this.BaseURL + '/AdvertisingModels/' + id);
   }
-
 
 }

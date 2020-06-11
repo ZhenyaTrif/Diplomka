@@ -27,7 +27,7 @@ export class AdvertisingComponent implements OnInit {
       text: '',
       imagePath: '',
       itemPrice: '',
-      advertisingCategoryId: 0
+      advertisingCategoryId: 1
     }
   }
 

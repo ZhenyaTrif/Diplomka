@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="card">
+    <h1>Мои сообщения:</h1>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let mess of lotservice.messUsers; let k = index">
+            <strong>Лот "{{lotservice.messLots[k].lotName}}" ваш</strong>,
+            <strong>Конечная стоимость: </strong>{{lotservice.messLots[k].startPrice}}
+            <strong>Контактная информация: </strong>{{mess.email}}
+            <strong>Полное имя: </strong>{{mess.fullName}}
+            <strong>Имя пользователя: </strong>{{mess.userName}}
+        </li>
+    </ul>
+  </div>
+</div>

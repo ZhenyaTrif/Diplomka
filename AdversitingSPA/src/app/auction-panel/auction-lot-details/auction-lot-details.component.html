@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="card" *ngIf="lotDetails">
+    <div class="row">
+      <div class="col" style="margin-left: 20px;">
+        <h1>{{lotDetails.lotName}}</h1>
+      </div>
+      <div class="col-1" style="margin-right: 20px;">
+        <button class="btn btn-danger" (click)="closeLot()" >Закрыть лот</button>
+      </div>
+
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <img src="{{lotDetails.imagePath}}" class="mx-auto d-block" width="300" height="300">
+        </li>
+        <li class="list-group-item">
+            <strong>Марка автомобиля: </strong>{{lotDetails.categoryName}}
+        </li>
+        <li class="list-group-item">
+            <strong>Описание: </strong>{{lotDetails.text}}
+        </li>
+        <li class="list-group-item">
+          <h2><strong>Текущая ставка: </strong>{{ownPrice}} р.</h2>
+        </li>
+        <li class="list-group-item">
+          <button class="btn btn-success" (click)="makeBet()" >Сделать ставку +100</button>
+        </li>
+    </ul>
+  </div>
+</div>

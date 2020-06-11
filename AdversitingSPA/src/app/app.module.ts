@@ -23,6 +23,11 @@ import { AdvertisingService } from './shared/advertising.service';
 import { AdvertisingDetailsComponent } from './advertising-panel/advertising-details/advertising-details.component';
 import { AdvertisingCategoryListComponent } from './advertising-panel/advertising-category-list/advertising-category-list.component';
 import { AdvertisingCategoryMenuComponent } from './advertising-panel/advertising-category-menu/advertising-category-menu.component';
+import { AuctionLotComponent } from './auction-panel/auction-lot/auction-lot.component';
+import { AuctionLotListComponent } from './auction-panel/auction-lot-list/auction-lot-list.component';
+import { LotService } from './shared/lot.service';
+import { AuctionLotDetailsComponent } from './auction-panel/auction-lot-details/auction-lot-details.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +44,10 @@ import { AdvertisingCategoryMenuComponent } from './advertising-panel/advertisin
     AdvertisingDetailsComponent,
     AdvertisingCategoryListComponent,
     AdvertisingCategoryMenuComponent,
+    AuctionLotComponent,
+    AuctionLotListComponent,
+    AuctionLotDetailsComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +64,7 @@ import { AdvertisingCategoryMenuComponent } from './advertising-panel/advertisin
     provide: HTTP_INTERCEPTORS,
     useClass: AuthIntercepter,
     multi: true
-  }, AdvertisingService],
+  }, AdvertisingService, LotService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
